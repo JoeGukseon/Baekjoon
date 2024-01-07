@@ -2,27 +2,28 @@ class Solution
 {
     public int solution(String s)
     {
-        int longestPalindromeLength = 0;
+        int n = s.length();
 
-        for (int i = 0; i < s.length(); i++) {
-            for (int j = i; j < s.length(); j++) {
-                if (isPalindrome(s, i, j)) {
-                    longestPalindromeLength = Math.max(longestPalindromeLength, j - i + 1);
+        boolean[][] dp = new boolean[n][n];
+
+        int longestLength = 1;
+
+        for (int i = 0; i < n; i++) {
+            dp[i][i] = true;
+        }
+
+        for (int length = 2; length <= n; length++) {
+            for (int i = 0; i <= n - length; i++) {
+                int j = i + length - 1;
+                if (s.charAt(i) == s.charAt(j)) {
+                    if (length == 2 || dp[i + 1][j - 1]) {
+                        dp[i][j] = true;
+                        longestLength = length;
+                    }
                 }
             }
         }
 
-        return longestPalindromeLength;
-    }
-    
-    public static boolean isPalindrome(String str, int start, int end) {
-        while (start < end) {
-            if (str.charAt(start) != str.charAt(end)) {
-                return false;
-            }
-            start++;
-            end--;
-        }
-        return true;
+        return longestLength;
     }
 }
