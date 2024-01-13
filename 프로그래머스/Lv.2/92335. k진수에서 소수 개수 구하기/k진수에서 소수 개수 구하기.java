@@ -10,20 +10,6 @@ class Solution {
         return true;
     }
 
-    public class KnumConverter {
-        public boolean isPrime(long n) {
-            if (n <= 1) return false;
-            for (int i = 2; i * i <= n; i++)
-                if (n % i == 0)
-                    return false;
-            return true;
-        }
-
-        public String toKnum(int n, int k) {
-            return Integer.toString(n, k);
-        }
-    }
-
     
     public int solution(int n, int k) {
         int answer = 0;
