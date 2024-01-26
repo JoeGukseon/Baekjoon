@@ -4,7 +4,7 @@
 #include <string.h>
 
 int compare(const void *a, const void *b) {
-    char str1[20], str2[20];
+    char str1[9], str2[9];
     sprintf(str1, "%d%d", *(int*)b, *(int*)a);
     sprintf(str2, "%d%d", *(int*)a, *(int*)b);
     return strcmp(str1, str2);
@@ -31,7 +31,7 @@ char* solution(int numbers[], size_t numbers_len) {
     answer[0] = '\0';
 
     for (size_t i = 0; i < numbers_len; ++i) {
-        char numStr[20];
+        char numStr[5];
         sprintf(numStr, "%d", numbers[i]);
         strcat(answer, numStr);
     }
